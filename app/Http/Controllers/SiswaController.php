@@ -8,9 +8,13 @@ use App\Siswa;
 
 class SiswaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-    	$siswa = Siswa::all();
+    	if ($request->has('cari')) {
+    		$siswa = Siswa::where('nama_depan', 'LIKE', '%'.$request->cari.'%')->get();
+    	}else{
+    		$siswa = Siswa::all();
+    	}
     	return view('siswa.index', [
     		'siswa' => $siswa
     	]);
