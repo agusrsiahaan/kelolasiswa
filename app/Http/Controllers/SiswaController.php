@@ -14,4 +14,10 @@ class SiswaController extends Controller
     		'siswa' => $siswa
     	]);
     }
+
+    public function create(Request $request)
+    {
+    	Siswa::create($request->all());
+    	return redirect('/siswa')->with('sukses', 'Data berhasil ditambah!');
+    }
 }
