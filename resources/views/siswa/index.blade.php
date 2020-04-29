@@ -8,6 +8,11 @@
             {{session('sukses')}}
           </div>
         @endif
+        @if(session('hapus'))
+          <div class="alert alert-danger" role="alert">
+            {{session('hapus')}}
+          </div>
+        @endif
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Data Siswa</h1>
@@ -111,7 +116,10 @@
                       <td>{{$data->jenis_kelamin}}</td>
                       <td>{{$data->agama}}</td>
                       <td>{{$data->alamat}}</td>
-                      <td><a href="/siswa/{{$data->id}}/edit" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a></td>
+                      <td>
+                        <a href="/siswa/{{$data->id}}/edit" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
+                        <a href="/siswa/{{$data->id}}/delete" class="btn btn-danger" onclick="return confirm('Are you sure ?')"><i class="fas fa-trash"></i> Delete</a>
+                      </td>
                     </tr>
                     @endforeach
                   </tbody>
