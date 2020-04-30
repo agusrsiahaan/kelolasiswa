@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+  Edit Data {{$siswa->nama_depan}}  {{$siswa->nama_belakang}}
+@endsection
+
 @section('content')
 
 <!-- Begin Page Content -->

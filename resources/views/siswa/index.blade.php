@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+Data Siswa
+@endsection
+
 @section('content')
         <!-- Begin Page Content -->
         <div class="container-fluid">
