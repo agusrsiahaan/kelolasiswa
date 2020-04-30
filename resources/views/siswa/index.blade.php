@@ -54,6 +54,10 @@ Data Siswa
                             <input type="text" class="form-control" id="nama_belakang" name="nama_belakang" placeholder="Nama Depan">
                           </div>
                           <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Nama Depan">
+                          </div>
+                          <div class="form-group">
                             <label for="jenis_kelamin">Jenis Kelamin</label>
                             <select class="form-control" name="jenis_kelamin" id="jenis_kelamin">
                               <option value="">Pilih</option>

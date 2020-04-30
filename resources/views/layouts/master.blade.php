@@ -121,11 +121,11 @@
 
 
 
-  <script src="{{asset('profile/vendors/jquery/dist/jquery.min.js')}}"></script>
+  <!-- <script src="{{asset('profile/vendors/jquery/dist/jquery.min.js')}}"></script>
   <script src="{{asset('profile/vendors/popper.js/dist/umd/popper.min.js')}}"></script>
   <script src="{{asset('profile/vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
   <script src="{{asset('profile/assets/js/main.js')}}"></script>
-
+ -->
 
 
 
