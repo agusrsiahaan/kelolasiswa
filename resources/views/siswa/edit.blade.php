@@ -28,7 +28,7 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <form action="/siswa/{{$siswa->id}}/update" method="POST">
+                <form action="/siswa/{{$siswa->id}}/update" method="POST" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="form-group">
                   <label for="nama_depan">Nama Depan</label>
@@ -47,8 +47,8 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="jenis_kelamin">Agama</label>
-                  <select class="form-control" name="agama" id="jenis_kelamin">
+                  <label for="agama">Agama</label>
+                  <select class="form-control" name="agama" id="agama">
                     <option value="">Pilih</option>
                     <option value="I" {{ $siswa->agama == 'Islam' ? 'selected' : ''}}>Islam</option>
                     <option value="KP" {{ $siswa->agama == 'Kristen Protestan' ? 'selected' : ''}}>Kristen Protestan</option>
@@ -57,6 +57,10 @@
                     <option value="H" {{ $siswa->agama == 'Hindu' ? 'selected' : ''}}>Hindu</option>
                     <option value="K" {{ $siswa->agama == 'Kong Hu Cu' ? 'selected' : ''}}>Kong Hu Cu</option>
                   </select>
+                </div>
+                <div class="form-group">
+                  <label for="avatar">Upload Gambar</label>
+                  <input name="avatar" type="file" class="form-control" id="avatar">
                 </div>
                 <div class="form-group">
                   <label for="alamat">Alamat</label>

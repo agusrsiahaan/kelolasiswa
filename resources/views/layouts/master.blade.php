@@ -20,6 +20,16 @@
   <link href="{{asset('admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
   <link href="{{asset('admin/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 
+  
+  <link rel="stylesheet" href="{{asset('profile/vendors/font-awesome/css/font-awesome.min.css')}}">
+  <link rel="stylesheet" href="{{asset('profile/vendors/themify-icons/css/themify-icons.css')}}">
+  <link rel="stylesheet" href="{{asset('profile/vendors/flag-icon-css/css/flag-icon.min.css')}}">
+  <link rel="stylesheet" href="{{asset('profile/vendors/selectFX/css/cs-skin-elastic.css')}}">
+
+
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
 </head>
 
 <body id="page-top">
@@ -107,6 +117,18 @@
 
   <!-- Page level custom scripts -->
   <script src="{{asset('admin/js/demo/datatables-demo.js')}}"></script>
+
+
+
+
+  <script src="{{asset('profile/vendors/jquery/dist/jquery.min.js')}}"></script>
+  <script src="{{asset('profile/vendors/popper.js/dist/umd/popper.min.js')}}"></script>
+  <script src="{{asset('profile/vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+  <script src="{{asset('profile/assets/js/main.js')}}"></script>
+
+
+
+
   
 </body>
 

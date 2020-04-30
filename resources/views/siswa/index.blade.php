@@ -115,8 +115,8 @@ Data Siswa
                   <tbody>
                     @foreach($siswa as $data)
                     <tr>
-                      <td>{{$data->nama_depan}}</td>
-                      <td>{{$data->nama_belakang}}</td>
+                      <td><a href="/siswa/{{$data->id}}/profile">{{$data->nama_depan}}</a></td>
+                      <td><a href="/siswa/{{$data->id}}/profile">{{$data->nama_belakang}}</a></td>
                       <td>{{$data->jenis_kelamin}}</td>
                       <td>{{$data->agama}}</td>
                       <td>{{$data->alamat}}</td>

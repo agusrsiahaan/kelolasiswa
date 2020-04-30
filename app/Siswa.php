@@ -29,4 +29,12 @@ class Siswa extends Model
 
     	][$attribute];
     }
+
+    public function getAvatar()
+    {
+        if (!$this->avatar) {
+            return asset('images/admin.jpg');
+        }
+        return asset('images/'.$this->avatar);
+    }
 }
