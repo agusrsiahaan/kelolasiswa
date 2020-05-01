@@ -17,6 +17,11 @@ Data Siswa
             {{session('hapus')}}
           </div>
         @endif
+        @if(session('error'))
+          <div class="alert alert-warning" role="alert">
+            {{session('error')}}
+          </div>
+        @endif
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Data Siswa</h1>

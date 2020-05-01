@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Siswa;
 use App\User;
+use App\Mapel;
 
 class SiswaController extends Controller
 {
@@ -92,13 +93,28 @@ class SiswaController extends Controller
     {
     	$siswa = Siswa::findOrFail($id);
     	$siswa->delete($siswa);
+
+        $user = Siswa::findOrFail($id);
+
     	return redirect('/siswa')->with('hapus', 'Data berhasil dihapus!');
     }
 
     public function profile($id)
     {
         $siswa = Siswa::findOrFail($id);
-        return view ('siswa.profile', compact('siswa'));
+        $mapel = Mapel::all();
+        return view ('siswa.profile', compact('siswa', 'mapel'));
+    }
+
+    public function addnilai(Request $request, $idsiswa)
+    {
+        $siswa = Siswa::findOrFail($idsiswa);
+        if ($siswa->mapel()->where('mapel_id', $request->mapel_id)->exists()) {
+            return redirect('siswa/'.$idsiswa.'/profile')->with('error', 'Nilai sudah ada!');
+        }
+        $siswa->mapel()->attach($request->mapel_id, ['nilai' => $request->nilai]);
+
+        return redirect('siswa/'.$idsiswa.'/profile')->with('sukses', 'Nilai berhasil ditambah!');
     }
 
 
