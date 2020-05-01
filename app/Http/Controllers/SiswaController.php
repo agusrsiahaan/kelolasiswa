@@ -23,6 +23,15 @@ class SiswaController extends Controller
 
     public function create(Request $request)
     {
+        $this->validate($request, [
+            'nama_depan'    => 'required|min:5',
+            'nama_belakang' => 'required',
+            'email'         => 'required',
+            'jenis_kelamin' => 'required',
+            'agama'         => 'required',
+            'alamat'        => 'required',
+            'avatar'        => 'mimes:jpeg,jpg,png,gif|required|max:10000', 
+        ]);
     	
         $user = new User;
         $user->role = 'siswa';
@@ -35,24 +44,47 @@ class SiswaController extends Controller
         //Insert table siswa
         $request->request->add(['user_id'=> $user->id]);
         $siswa = Siswa::create($request->all());
+        if ($request->hasFile('avatar')) {
+            $request->file('avatar')->move('images/', $request->file('avatar')->getClientOriginalName());
+            $siswa->avatar = $request->file('avatar')->getClientOriginalName();
+            $siswa->save();
+        }
     	return redirect('/siswa')->with('sukses', 'Data berhasil ditambah!');
     }
 
     public function edit($id)
     {
     	$siswa = Siswa::findOrFail($id);
-    	return view('siswa.edit', compact('siswa'));
+        $user = User::findOrFail($id);
+    	return view('siswa.edit', compact('siswa', 'user'));
     }
 
     public function update(Request $request, $id)
     {
+        //dd($request->all());
+        $this->validate($request, [
+            'nama_depan'    => 'required',
+            'nama_belakang' => 'required',
+            'email'         => 'required|email',
+            'jenis_kelamin' => 'required',
+            'agama'         => 'required',
+            'alamat'        => 'required',
+            'avatar'        => 'required|mimes:jpeg,jpg,png,gif|required|max:10000', 
+        ]);
+
     	$siswa = Siswa::findOrFail($id);
     	$siswa->update($request->all());
+
+        $user = User::findOrFail($id);
+        $user->email = $request->email;
+        $user->save();
+
         if ($request->hasFile('avatar')) {
             $request->file('avatar')->move('images/', $request->file('avatar')->getClientOriginalName());
             $siswa->avatar = $request->file('avatar')->getClientOriginalName();
             $siswa->save();
         }
+        
     	return Redirect::back()->with('sukses','Data berhasil diubah!');
     }
 

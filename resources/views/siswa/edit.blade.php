@@ -33,10 +33,17 @@
                 <div class="form-group">
                   <label for="nama_depan">Nama Depan</label>
                   <input type="text" class="form-control" id="nama_depan" name="nama_depan" placeholder="Nama Depan" value="{{$siswa->nama_depan}}">
+                  <div>{{$errors->first('nama_depan')}}</div>
                 </div>
                 <div class="form-group">
                   <label for="nama_belakang">Nama Belakang</label>
                   <input type="text" class="form-control" id="nama_belakang" name="nama_belakang" placeholder="Nama Depan" value="{{$siswa->nama_belakang}}">
+                  <div>{{$errors->first('nama_belakang')}}</div>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Nama Depan" value="{{$user->email}}">
+                  <div>{{$errors->first('email')}}</div>
                 </div>
                 <div class="form-group">
                   <label for="jenis_kelamin">Jenis Kelamin</label>
@@ -44,6 +51,7 @@
                     <option value="">Pilih</option>
                     <option value="L" {{ $siswa->jenis_kelamin == 'Laki-laki' ? 'selected' : ''}}>Laki-laki</option>
                     <option value="P" {{ $siswa->jenis_kelamin == 'Perempuan' ? 'selected' : ''}}>Perempuan</option>
+                    <div>{{$errors->first('jenis_kelamin')}}</div>
                   </select>
                 </div>
                 <div class="form-group">
@@ -56,15 +64,18 @@
                     <option value="B" {{ $siswa->agama == 'Budha' ? 'selected' : ''}}>Budha</option>
                     <option value="H" {{ $siswa->agama == 'Hindu' ? 'selected' : ''}}>Hindu</option>
                     <option value="K" {{ $siswa->agama == 'Kong Hu Cu' ? 'selected' : ''}}>Kong Hu Cu</option>
+                    <div>{{$errors->first('agama')}}</div>
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="avatar">Upload Gambar</label>
                   <input name="avatar" type="file" class="form-control" id="avatar">
+                  <div>{{$errors->first('avatar')}}</div>
                 </div>
                 <div class="form-group">
                   <label for="alamat">Alamat</label>
                   <textarea class="form-control" name="alamat" id="alamat" rows="3">{{$siswa->alamat}}</textarea>
+                  <div>{{$errors->first('alamat')}}</div>
                 </div>
                 
                 <div class="modal-footer">
