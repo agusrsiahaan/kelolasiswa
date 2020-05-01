@@ -18,13 +18,13 @@
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
-
+      @if(auth()->user()->role == 'admin')
       <li class="nav-item active">
         <a class="nav-link" href="/siswa">
           <i class="fas fa-user-graduate"></i>
           <span>Siswa</span></a>
       </li>
-
+      @endif
       <!-- Divider -->
       <hr class="sidebar-divider">
 
