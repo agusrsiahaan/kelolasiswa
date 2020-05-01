@@ -118,18 +118,13 @@
   <!-- Page level custom scripts -->
   <script src="{{asset('admin/js/demo/datatables-demo.js')}}"></script>
 
-
-
+  @yield('footer')
 
   <!-- <script src="{{asset('profile/vendors/jquery/dist/jquery.min.js')}}"></script>
   <script src="{{asset('profile/vendors/popper.js/dist/umd/popper.min.js')}}"></script>
   <script src="{{asset('profile/vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
   <script src="{{asset('profile/assets/js/main.js')}}"></script>
  -->
-
-
-
-  
 </body>
 
 </html>
