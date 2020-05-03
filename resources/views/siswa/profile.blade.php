@@ -18,6 +18,12 @@
     {{session('sukses')}}
   </div>
 @endif
+@if(session('hapus'))
+  <div class="alert alert-primary" role="alert">
+    {{session('hapus')}}
+  </div>
+@endif
+
 @if(session('error'))
   <div class="alert alert-warning" role="alert">
     {{session('error')}}
@@ -130,6 +136,7 @@
                         <th>Semester</th>
                         <th>Nilai</th>
                         <th>Edit</th>
+                        <th>Delete</th>
                       </tr>
                     </thead>
                     <tfoot>
@@ -139,6 +146,7 @@
                         <th>Semester</th>
                         <th>Nilai</th>
                         <th>Edit</th>
+                        <th>Delete</th>
                       </tr>
                     </tfoot>
                     <tbody>
@@ -148,7 +156,8 @@
                         <td>{{$mapel->nama}}</td>
                         <td>{{$mapel->semester}}</td>
                         <td>{{$mapel->pivot->nilai}}</td>
-                        <td><a href="/siswa/{{$siswa->id}}/{{$mapel->id}}/editnilai"> <i class="fas fa-edit"></i></a></td>
+                        <td style="text-align: center;"><a href="/siswa/{{$siswa->id}}/{{$mapel->id}}/editnilai"> <i class="fas fa-edit"></i></a></td>
+                        <td style="text-align: center;"><a href="/siswa/{{$siswa->id}}/{{$mapel->id}}/deletenilai" onclick="return confirm('Are you sure ?')"> <i class="fas fa-trash"></i></a></td>
                         <!-- <td><div class="col-6 col-lg-8 d-flex align-items-center"> <a href="#" id="username" data-type="text" data-pk="{{$mapel->id}}" class="editable editable-click" data-abc="true" style="">{{$mapel->pivot->nilai}}</a> </div></td> -->
                        <!-- << td><a href="#" class="nilai" data-type="text" data-pk="{{$mapel->id}}" data-url="/api/siswa/{{$siswa->id}}/editnilai" data-title="Edit Nilai">{{$mapel->pivot->nilai}}</a></td> -->
                       </tr>
