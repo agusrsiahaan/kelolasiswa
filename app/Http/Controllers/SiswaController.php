@@ -107,15 +107,18 @@ class SiswaController extends Controller
         //data chart
         $categories = [];
         $data = [];
+        $id_mapel = [];
+        $nama_siswa = $siswa->nama_depan.' '.$siswa->nama_belakang;
 
         foreach ($mapel as $mp) {
             if ($siswa->mapel()->wherePivot('mapel_id', $mp->id)->first()) {
                 $categories[] = $mp->nama;
+                $id_mapel [] = $mp->id;
                 $data[] = $siswa->mapel()->wherePivot('mapel_id', $mp->id)->first()->pivot->nilai;
             }
         }
 
-        return view ('siswa.profile', compact('siswa', 'mapel', 'categories', 'data'));
+        return view ('siswa.profile', compact('siswa', 'mapel', 'categories', 'data', 'nama_siswa', 'id_mapel'));
     }
 
     public function addnilai(Request $request, $idsiswa)
@@ -127,6 +130,25 @@ class SiswaController extends Controller
         $siswa->mapel()->attach($request->mapel_id, ['nilai' => $request->nilai]);
 
         return redirect('siswa/'.$idsiswa.'/profile')->with('sukses', 'Nilai berhasil ditambah!');
+    }
+
+    public function editnilai($id, $id_mapel)
+    {
+        $siswa = Siswa::findOrFail($id);
+        $mapel = Mapel::findOrFail($id_mapel);
+        $nilai = $siswa->mapel()->wherePivot('mapel_id', $id_mapel)->first()->pivot->nilai;
+        return view('siswa.editnilai', compact('siswa', 'mapel', 'nilai'));
+    }
+
+    public function updatenilai(Request $request, $id, $id_mapel)
+    {
+        $this->validate($request, [
+            'nilai'    => 'required|numeric', 
+        ]);
+
+        $siswa = Siswa::findOrFail($id);
+        $siswa->mapel()->updateExistingPivot($request->mapel,['nilai' => $request->nilai]);
+        return redirect('siswa/'.$id.'/profile')->with('sukses', 'Nilai berhasil diubah!');
     }
 
 

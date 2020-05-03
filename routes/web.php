@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/register', 'AuthController@register')->name('register');
+
 
 Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/postlogin', 'AuthController@postlogin');
@@ -28,6 +30,8 @@ Route::group(['middleware' => ['auth','checkRole:admin']], function(){
 	Route::get('/siswa/{id}/delete', 'SiswaController@delete');
 	Route::get('/siswa/{id}/profile', 'SiswaController@profile');
 	Route::post('/siswa/{id}/addnilai', 'SiswaController@addnilai');
+	Route::get('/siswa/{id}/{id_mapel}/editnilai', 'SiswaController@editnilai');
+	Route::post('/siswa/{id}/{id_mapel}/updatenilai', 'SiswaController@updatenilai');
 });
 
 Route::group(['middleware' => ['auth','checkRole:admin,siswa']], function(){

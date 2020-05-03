@@ -19,16 +19,13 @@
   <!-- Custom styles for this template-->
   <link href="{{asset('admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
   <link href="{{asset('admin/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
-
-  
   <link rel="stylesheet" href="{{asset('profile/vendors/font-awesome/css/font-awesome.min.css')}}">
   <link rel="stylesheet" href="{{asset('profile/vendors/themify-icons/css/themify-icons.css')}}">
   <link rel="stylesheet" href="{{asset('profile/vendors/flag-icon-css/css/flag-icon.min.css')}}">
   <link rel="stylesheet" href="{{asset('profile/vendors/selectFX/css/cs-skin-elastic.css')}}">
-
-
-
+  @yield('header')
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
 
 </head>
 

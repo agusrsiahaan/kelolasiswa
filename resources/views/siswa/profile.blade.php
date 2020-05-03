@@ -1,5 +1,10 @@
 @extends('layouts.master')
 
+@section('header')
+  <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'>
+@endsection
 @section('title')
   {{$siswa->nama_depan}}  {{$siswa->nama_belakang}} Profile's
 @endsection
@@ -124,6 +129,7 @@
                         <th>Mata Pelajaran</th>
                         <th>Semester</th>
                         <th>Nilai</th>
+                        <th>Edit</th>
                       </tr>
                     </thead>
                     <tfoot>
@@ -132,6 +138,7 @@
                         <th>Mata Pelajaran</th>
                         <th>Semester</th>
                         <th>Nilai</th>
+                        <th>Edit</th>
                       </tr>
                     </tfoot>
                     <tbody>
@@ -141,6 +148,9 @@
                         <td>{{$mapel->nama}}</td>
                         <td>{{$mapel->semester}}</td>
                         <td>{{$mapel->pivot->nilai}}</td>
+                        <td><a href="/siswa/{{$siswa->id}}/{{$mapel->id}}/editnilai"> <i class="fas fa-edit"></i></a></td>
+                        <!-- <td><div class="col-6 col-lg-8 d-flex align-items-center"> <a href="#" id="username" data-type="text" data-pk="{{$mapel->id}}" class="editable editable-click" data-abc="true" style="">{{$mapel->pivot->nilai}}</a> </div></td> -->
+                       <!-- << td><a href="#" class="nilai" data-type="text" data-pk="{{$mapel->id}}" data-url="/api/siswa/{{$siswa->id}}/editnilai" data-title="Edit Nilai">{{$mapel->pivot->nilai}}</a></td> -->
                       </tr>
                       @endforeach
                     </tbody>
@@ -158,8 +168,12 @@
     </div>
   </div>
 </div>
+
 @endsection
 @section('footer')
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script>
   Highcharts.chart('chartNilai', {
@@ -167,10 +181,10 @@
         type: 'column'
     },
     title: {
-        text: 'Monthly Average Rainfall'
+        text: 'Grafik Nilai {!!json_encode($nama_siswa)!!}'
     },
     subtitle: {
-        text: 'Source: WorldClimate.com'
+        text: 'Sistem Pengelolaan Data Siswa'
     },
     xAxis: {
         categories: {!!json_encode($categories)!!},
@@ -179,7 +193,7 @@
     yAxis: {
         min: 0,
         title: {
-            text: 'Rainfall (mm)'
+            text: 'Score (0-100)'
         }
     },
     tooltip: {
@@ -202,6 +216,41 @@
 
     }]
 });
+
+(function($) {
+  'use strict';
+  $(function() {
+  if ($('#editable-form').length) {
+  $.fn.editable.defaults.mode = 'inline';
+  $.fn.editableform.buttons =
+  '<button type="submit" class="btn btn-primary btn-sm editable-submit">' +
+      '<i class="fa fa-fw fa-check"></i>' +
+      '</button>' +
+  '<button type="button" class="btn btn-warning btn-sm editable-cancel">' +
+      '<i class="fa fa-fw fa-times"></i>' +
+      '</button>';
+  $('#username').editable({
+  type: 'text',
+  pk: 1,
+  name: 'username',
+  title: 'Enter username'
+  });
+
+  $('#user .editable').on('hidden', function(e, reason) {
+  if (reason === 'save' || reason === 'nochange') {
+  var $next = $(this).closest('tr').next().find('.editable');
+  if ($('#autoopen').is(':checked')) {
+  setTimeout(function() {
+  $next.editable('show');
+  }, 300);
+  } else {
+  $next.focus();
+  }
+  }
+  });
+  }
+  });
+  })(jQuery);
 </script>
 @endsection
       
