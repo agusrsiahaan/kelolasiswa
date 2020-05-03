@@ -38,4 +38,5 @@ Route::group(['middleware' => ['auth','checkRole:admin']], function(){
 
 Route::group(['middleware' => ['auth','checkRole:admin,siswa']], function(){
 	Route::get('/dashboard', 'DashboardController@index');
+	Route::get('/dashboard/viewtopfive', 'DashboardController@viewtopfive');
 });
