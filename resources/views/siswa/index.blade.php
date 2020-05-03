@@ -126,6 +126,7 @@ Data Siswa
                       <th>Jenis Kelamin</th>
                       <th>Agama</th>
                       <th>Alamat</th>
+                      <th>Rata Nilai</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
@@ -136,6 +137,7 @@ Data Siswa
                      <th>Jenis Kelamin</th>
                      <th>Agama</th>
                      <th>Alamat</th>
+                     <th>Rata Nilai</th>
                      <th>Aksi</th>
                     </tr>
                   </tfoot>
@@ -147,6 +149,7 @@ Data Siswa
                       <td>{{$data->jenis_kelamin}}</td>
                       <td>{{$data->agama}}</td>
                       <td>{{$data->alamat}}</td>
+                      <td>{{$data->rataNilai()}}</td>
                       <td>
                         <a href="/siswa/{{$data->id}}/edit" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
                         <a href="/siswa/{{$data->id}}/delete" class="btn btn-danger" onclick="return confirm('Are you sure ?')"><i class="fas fa-trash"></i> Delete</a>

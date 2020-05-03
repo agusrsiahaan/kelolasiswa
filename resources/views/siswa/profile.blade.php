@@ -58,10 +58,10 @@
                           <a href="#"> <i class="fas fa-book"></i> Mata Pelajaran <span class="badge badge-primary pull-right">{{$siswa->mapel->count()}}</span></a>
                       </li>
                       <li class="list-group-item">
-                          <a href="#"> <i class="fa fa-tasks"></i> Recent Activity <span class="badge badge-danger pull-right">15</span></a>
+                          <a href="#"> <i class="fas fa-star-half-alt"></i> Rata-rata Nilai <span class="badge badge-success pull-right">{{$siswa->rataNilai()}}</span></a>
                       </li>
                       <li class="list-group-item">
-                          <a href="#"> <i class="fa fa-bell-o"></i> Notification <span class="badge badge-success pull-right">11</span></a>
+                          <a href="#"> <i class="fa fa-tasks"></i> Recent Activity <span class="badge badge-danger pull-right">15</span></a>
                       </li>
                       <li class="list-group-item">
                           <a href="#"> <i class="fa fa-comments-o"></i> Message <span class="badge badge-warning pull-right r-activity">03</span></a>

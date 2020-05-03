@@ -158,5 +158,16 @@ class SiswaController extends Controller
         return redirect()->back()->with('hapus', 'Data berhasil dihapus!');
     }
 
+    public function rataNilai()
+    {
+        $total = 0;
+        $hitung = 0;
+        foreach($this->mapel as $mapel){
+            $total = $total + $mapel->pivot->nilai;
+            $hitung++;
+        }
+
+        return $total/$hitung;
+    }
 
 }
