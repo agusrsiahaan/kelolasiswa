@@ -134,6 +134,7 @@
                         <th>Kode</th>
                         <th>Mata Pelajaran</th>
                         <th>Semester</th>
+                        <th>Nama Guru</th>
                         <th>Nilai</th>
                         <th>Edit</th>
                         <th>Delete</th>
@@ -144,6 +145,7 @@
                         <th>Kode</th>
                         <th>Mata Pelajaran</th>
                         <th>Semester</th>
+                        <th>Nama Guru</th>
                         <th>Nilai</th>
                         <th>Edit</th>
                         <th>Delete</th>
@@ -155,6 +157,7 @@
                         <td>{{$mapel->kode}}</td>
                         <td>{{$mapel->nama}}</td>
                         <td>{{$mapel->semester}}</td>
+                        <td><a href="/guru/{{$mapel->guru->id}}/profile">{{$mapel->guru->nama}}</a></td>
                         <td>{{$mapel->pivot->nilai}}</td>
                         <td style="text-align: center;"><a href="/siswa/{{$siswa->id}}/{{$mapel->id}}/editnilai"> <i class="fas fa-edit"></i></a></td>
                         <td style="text-align: center;"><a href="/siswa/{{$siswa->id}}/{{$mapel->id}}/deletenilai" onclick="return confirm('Are you sure ?')"> <i class="fas fa-trash"></i></a></td>
