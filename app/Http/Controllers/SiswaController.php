@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Redirect;
 use App\Siswa;
 use App\User;
 use App\Mapel;
+use App\Exports\SiswaExport;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class SiswaController extends Controller
 {
@@ -156,6 +159,18 @@ class SiswaController extends Controller
         $siswa = Siswa::findOrFail($id);
         $siswa->mapel()->detach($id_mapel);
         return redirect()->back()->with('hapus', 'Data berhasil dihapus!');
+    }
+
+    public function export_excel()
+    {
+        return Excel::download(new SiswaExport, 'siswa.xlsx');
+    }
+
+    public function export_pdf()
+    {
+        $siswa = Siswa::all();
+        $pdf = PDF::LoadView('export.siswapdf', ['siswa' => $siswa]);
+        return $pdf->download('siswa.pdf');
     }
 
 }
