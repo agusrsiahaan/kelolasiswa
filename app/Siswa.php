@@ -43,8 +43,23 @@ class Siswa extends Model
         return $this->belongsToMany(Mapel::class)->withPivot(['nilai'])->withTimeStamps();
     }
 
-    public function rataNilai()
+    public function user()
     {
+        return $this->belongsTo(User::class);
+    }
+
+    public function rataNilai()
+    { 
+
+        // if($this->mapel->isNotEmpty()){
+       
+        // }
+
+        // //jika belum ada return 0
+        // return 0;
+        // }
+
+
         $total = 0;
         $hitung = 0;
         foreach($this->mapel as $mapel){
@@ -52,7 +67,8 @@ class Siswa extends Model
             $hitung++;
         }
 
-        return round($total/$hitung);
+        //jika siswa baru ditambah dan blm memiliki nilai maka rata2 nilai 0
+        return $total != 0 ? round($total/$hitung) : $total;
     }
 
     public function nama_lengkap()

@@ -30,7 +30,7 @@ class SiswaController extends Controller
         $this->validate($request, [
             'nama_depan'    => 'required|min:5',
             'nama_belakang' => 'required',
-            'email'         => 'required',
+            'email'         => 'required|email|unique:users',
             'jenis_kelamin' => 'required',
             'agama'         => 'required',
             'alamat'        => 'required',
@@ -59,7 +59,7 @@ class SiswaController extends Controller
     public function edit($id)
     {
     	$siswa = Siswa::findOrFail($id);
-        $user = User::findOrFail($id);
+        $user = User::findOrFail($siswa->user_id);
     	return view('siswa.edit', compact('siswa', 'user'));
     }
 
@@ -95,9 +95,13 @@ class SiswaController extends Controller
     public function delete($id)
     {
     	$siswa = Siswa::findOrFail($id);
-    	$siswa->delete($siswa);
+        $user = User::findOrFail($siswa->user_id);
 
-        $user = Siswa::findOrFail($id);
+        //delete nilai ketika data siswa dihapus
+        $siswa->mapel()->wherePivot('siswa_id', '=', $id)->detach();
+
+    	$siswa->delete($siswa);
+        $user->delete($user);
 
     	return redirect('/siswa')->with('hapus', 'Data berhasil dihapus!');
     }
@@ -158,7 +162,7 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::findOrFail($id);
         $siswa->mapel()->detach($id_mapel);
-        return redirect()->back()->with('hapus', 'Data berhasil dihapus!');
+        return redirect()->back()->with('hapus', 'Nilai berhasil dihapus!');
     }
 
     public function export_excel()

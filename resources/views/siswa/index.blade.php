@@ -157,7 +157,7 @@ Data Siswa
                       <td>{{$data->rataNilai()}}</td>
                       <td>
                         <a href="/siswa/{{$data->id}}/edit" class="btn btn-warning"><i class="fas fa-edit"></i> Edit</a>
-                        <a href="/siswa/{{$data->id}}/delete" class="btn btn-danger" onclick="return confirm('Are you sure ?')"><i class="fas fa-trash"></i> Delete</a>
+                        <a href="#" class="btn btn-danger delete" siswa-id="{{$data->id}}" siswa-nama="{{$data->nama_lengkap()}}"><i class="fas fa-trash"></i> Delete</a>
                       </td>
                     </tr>
                     @endforeach
@@ -168,4 +168,28 @@ Data Siswa
           </div>
         </div>
         <!-- /.container-fluid -->
+@endsection
+
+@section('footer')
+  <script type="text/javascript">
+    $('.delete').click(function(){
+      var siswa_id = $(this).attr('siswa-id');
+      var siswa_nama = $(this).attr('siswa-nama');
+      swal({
+      title: "Are you sure?",
+      text: "Hapus data siswa "+ siswa_nama + "?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+       console.log(willDelete);
+      if (willDelete) {
+        window.location = "/siswa/"+siswa_id+"/delete";
+      } else {
+        swal("Your imaginary file is safe!");
+      }
+    });
+    });
+  </script>
 @endsection

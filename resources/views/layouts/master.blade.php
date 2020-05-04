@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="{{asset('profile/vendors/themify-icons/css/themify-icons.css')}}">
   <link rel="stylesheet" href="{{asset('profile/vendors/flag-icon-css/css/flag-icon.min.css')}}">
   <link rel="stylesheet" href="{{asset('profile/vendors/selectFX/css/cs-skin-elastic.css')}}">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
   @yield('header')
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -114,6 +115,16 @@
 
   <!-- Page level custom scripts -->
   <script src="{{asset('admin/js/demo/datatables-demo.js')}}"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script>
+    @if(Session::has('sukses'))
+      toastr.success("{{Session::get('sukses')}}", "Sukses");
+    @endif
+    @if(Session::has('hapus'))
+      toastr.success("{{Session::get('hapus')}}", "Sukses");
+    @endif
+  </script>
 
   @yield('footer')
 
