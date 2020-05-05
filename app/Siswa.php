@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Siswa extends Model
 {
     protected $table = 'siswa';
-    protected $guarded = ['email'];
+    protected $guarded = ['email', 'password'];
 
     public function getJenisKelaminAttribute($attribute)
     {
