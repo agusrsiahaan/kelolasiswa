@@ -15,7 +15,6 @@ Route::get('/', 'SiteController@home');
 Route::get('/register', 'SiteController@register');
 Route::post('/postregister', 'SiteController@postregister');
 Route::get('/about', 'SiteController@about');
-
 Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/postlogin', 'AuthController@postlogin');
 Route::get('/logout', 'AuthController@logout');
@@ -34,9 +33,16 @@ Route::group(['middleware' => ['auth','checkRole:admin']], function(){
 	Route::get('/siswa/export_excel', 'SiswaController@export_excel');
 	Route::get('/siswa/export_pdf', 'SiswaController@export_pdf');
 	Route::get('/guru/{id}/profile', 'GuruController@profile');
+	Route::get('/posts', 'PostController@index');
 });
 
 Route::group(['middleware' => ['auth','checkRole:admin,siswa']], function(){
 	Route::get('/dashboard', 'DashboardController@index');
 	Route::get('/dashboard/viewtopfive', 'DashboardController@viewtopfive');
 });
+
+
+Route::get('/{slug}', [
+	'uses' => 'PostController@singlepost',
+	'as' => 'site.single.post'
+]);

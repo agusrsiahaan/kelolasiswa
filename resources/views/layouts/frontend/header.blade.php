@@ -27,7 +27,7 @@
           <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/register">Register</a></li>
-          <li><a href="events.html">Events</a></li>
+          <li><a href="/posts">Blog</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li class="menu-has-children"><a href="">Blog</a>
             <ul>

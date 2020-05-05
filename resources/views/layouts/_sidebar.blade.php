@@ -24,7 +24,13 @@
           <i class="fas fa-user-graduate"></i>
           <span>Siswa</span></a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/posts">
+          <i class="fas fa-blog"></i>
+          <span>Post</span></a>
+      </li>
       @endif
+      
       <!-- Divider -->
       <hr class="sidebar-divider">
 
