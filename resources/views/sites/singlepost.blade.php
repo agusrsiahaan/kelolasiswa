@@ -24,7 +24,7 @@
 				<div class="single-post row">
 					<div class="col-lg-12">
 						<div class="feature-img">
-							<img class="img-fluid" src="{{asset('frontend/img/blog/feature-img1.jpg')}}" alt="">
+							<img class="img-fluid" src="{{$posts->thumbnail()}}" alt="">
 						</div>									
 					</div>
 					<div class="col-lg-3  col-md-3 meta-details">
@@ -35,9 +35,9 @@
 							<li><a href="#">Lifestyle</a></li>
 						</ul>
 						<div class="user-details row">
-							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">Mark wiens</a> <span class="lnr lnr-user"></span></p>
-							<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{$posts->created_at}}</a> <span class="lnr lnr-calendar-full"></span></p>
-							<p class="view col-lg-12 col-md-12 col-6"><a href="#">1.2M Views</a> <span class="lnr lnr-eye"></span></p>
+							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{$posts->user->name}}</a> <span class="lnr lnr-user"></span></p>
+							<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{$posts->created_at->diffForHumans()}}</a> <span class="lnr lnr-calendar-full"></span></p>
+							<p class="view col-lg-12 col-md-12 col-6"><a href="#">{{$posts->user->role}}</a> <span class="lnr lnr-eye"></span></p>
 							<p class="comments col-lg-12 col-md-12 col-6"><a href="#">06 Comments</a> <span class="lnr lnr-bubble"></span></p>
 							<ul class="social-links col-lg-12 col-md-12 col-6">
 								<li><a href="#"><i class="fa fa-facebook"></i></a></li>

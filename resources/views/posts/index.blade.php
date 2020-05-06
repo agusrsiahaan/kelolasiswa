@@ -35,11 +35,7 @@ Data Post
     
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Tambah Data Siswa
-              </button>
-
+              <a href="{{route('posts.add')}}" class="btn btn-sm btn-primary">Add New Post</a>
               <!-- Modal -->
               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -49,73 +45,6 @@ Data Post
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
-                    </div>
-                    <div class="modal-body">
-
-                      <!--FORM INSERT -->
-                        <form action="/siswa/create" method="POST" enctype="multipart/form-data">
-                          {{csrf_field()}}
-                          <!-- <div class="form-group{{$errors->has('nama_depan') ? 'has-error' : ''}}">
-                            <label for="nama_depan">Nama Depan</label>
-                            <input type="text" class="form-control" id="nama_depan" name="nama_depan" placeholder="Nama Depan">
-                            @if($errors->has('nama_depan'))
-                              <span class="help-block">{{$errors->first('nama_depan')}}</span>
-                            @endif
-                          </div> -->
-                          <div class="form-group">
-                            <label for="nama_depan">Nama Depan</label>
-                            <input type="text" class="form-control" id="nama_depan" name="nama_depan" placeholder="Nama Depan" value="{{ old('nama_depan') }}">
-                            <div>{{$errors->first('nama_depan')}}</div>
-                          </div>
-                          <div class="form-group">
-                            <label for="nama_belakang">Nama Belakang</label>
-                            <input type="text" class="form-control" id="nama_belakang" name="nama_belakang" placeholder="Nama Depan" value="{{ old('nama_belakang') }}">
-                            <div>{{$errors->first('nama_belakang')}}</div>
-                          </div>
-                          <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Nama Depan" value="{{ old('email') }}">
-                            <div>{{$errors->first('email')}}</div>
-                          </div>
-                          <div class="form-group">
-                            <label for="jenis_kelamin">Jenis Kelamin</label>
-                            <select class="form-control" name="jenis_kelamin" id="jenis_kelamin">
-                              <option value="">Pilih</option>
-                              <option value="L"{{(old('jenis_kelamin') == 'L') ? ' selected' : ''}}>Laki-laki</option>
-                              <option value="P"{{(old('jenis_kelamin') == 'P') ? ' selected' : ''}}>Perempuan</option>
-                            </select>
-                            <div>{{$errors->first('jenis_kelamin')}}</div>
-                          </div>
-                          <div class="form-group">
-                            <label for="jenis_kelamin">Agama</label>
-                            <select class="form-control" name="agama" id="jenis_kelamin">
-                              <option value="">Pilih</option>
-                              <option value="I"{{(old('agama') == 'I') ? ' selected' : ''}}>Islam</option>
-                              <option value="KP"{{(old('agama') == 'KP') ? ' selected' : ''}}>Kristen Protestan</option>
-                              <option value="KK"{{(old('agama') == 'KK') ? ' selected' : ''}}>Kristen Katolik</option>
-                              <option value="B"{{(old('agama') == 'B') ? ' selected' : ''}}>Budha</option>
-                              <option value="H"{{(old('agama') == 'H') ? ' selected' : ''}}>Hindu</option>
-                              <option value="K"{{(old('agama') == 'K') ? ' selected' : ''}}>Kong Hu Cu</option>
-                            </select>
-                            <div>{{$errors->first('agama')}}</div>
-                          </div>
-                          <div class="form-group">
-                            <label for="avatar">Upload Gambar</label>
-                            <input name="avatar" type="file" class="form-control" id="avatar">
-                            <div>{{$errors->first('avatar')}}</div>
-                          </div>
-                          <div class="form-group">
-                            <label for="alamat">Alamat</label>
-                            <textarea class="form-control" name="alamat" id="alamat" rows="3">{{old('alamat')}}</textarea>
-                            <div>{{$errors->first('alamat')}}</div>
-                          </div>
-                      
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-primary">Tambah</button>
-                      </div>
-                    </form>
-
                     </div>
                   </div>
                 </div>

@@ -26,6 +26,11 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
   @yield('header')
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+  <style>
+    .ck-editor__editable{
+      min-height: 300px;
+    }
+  </style>
 
 
 </head>
@@ -117,6 +122,7 @@
   <script src="{{asset('admin/js/demo/datatables-demo.js')}}"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script src="{{asset('frontend/js/ckeditor.js')}}"></script>
   <script>
     @if(Session::has('sukses'))
       toastr.success("{{Session::get('sukses')}}", "Sukses");
@@ -125,14 +131,11 @@
       toastr.success("{{Session::get('hapus')}}", "Sukses");
     @endif
   </script>
-
   @yield('footer')
-
   <!-- <script src="{{asset('profile/vendors/jquery/dist/jquery.min.js')}}"></script>
   <script src="{{asset('profile/vendors/popper.js/dist/umd/popper.min.js')}}"></script>
   <script src="{{asset('profile/vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
   <script src="{{asset('profile/assets/js/main.js')}}"></script>
  -->
 </body>
-
 </html>
