@@ -177,4 +177,27 @@ class SiswaController extends Controller
         return $pdf->download('siswa.pdf');
     }
 
+    public function profilsaya()
+    {
+        $siswa = auth()->user()->siswa;
+
+        $mapel = Mapel::all();
+
+        //data chart
+        $categories = [];
+        $data = [];
+        $id_mapel = [];
+        $nama_siswa = $siswa->nama_depan.' '.$siswa->nama_belakang;
+
+        foreach ($mapel as $mp) {
+            if ($siswa->mapel()->wherePivot('mapel_id', $mp->id)->first()) {
+                $categories[] = $mp->nama;
+                $id_mapel [] = $mp->id;
+                $data[] = $siswa->mapel()->wherePivot('mapel_id', $mp->id)->first()->pivot->nilai;
+            }
+        }
+
+        return view('siswa.profilsaya', compact('siswa','nama_siswa', 'categories', 'mapel', 'data'));
+    }
+
 }

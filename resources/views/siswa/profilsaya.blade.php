@@ -42,7 +42,7 @@
           <div class="col-4">
             <div class="card">
               <div class="card-header">
-                <i class="fa fa-user"></i><strong class="card-title pl-2">Profile Card</strong>
+                <i class="fa fa-user"></i><strong class="card-title pl-2">Profiless Card</strong>
                   <a href="/siswa/{{$siswa->id}}/edit"style="float: right; color: #858796;"><i class="fas fa-edit"></i><strong class="card-title pl-2">Edit Profile</strong></a>
               </div>
               <div class="card-body">

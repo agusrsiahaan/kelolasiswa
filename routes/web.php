@@ -45,6 +45,10 @@ Route::group(['middleware' => ['auth','checkRole:admin']], function(){
 	]);
 });
 
+Route::group(['middleware' => ['auth', 'checkRole:siswa']], function(){
+	Route::get('profilsaya', 'SiswaController@profilsaya');
+});
+
 Route::group(['middleware' => ['auth','checkRole:admin,siswa']], function(){
 	Route::get('/dashboard', 'DashboardController@index');
 	Route::get('/dashboard/viewtopfive', 'DashboardController@viewtopfive');
