@@ -18,6 +18,11 @@
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/forum">
+          <i class="fas fa-comments"></i>
+          <span>Forum</span></a>
+      </li>
       @if(auth()->user()->role == 'admin')
       <li class="nav-item active">
         <a class="nav-link" href="/siswa">
