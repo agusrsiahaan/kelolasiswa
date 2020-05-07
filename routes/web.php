@@ -19,6 +19,14 @@ Route::get('/login', 'AuthController@login')->name('login');
 Route::post('/postlogin', 'AuthController@postlogin');
 Route::get('/logout', 'AuthController@logout');
 
+
+Route::get('sent_mail', function(){
+	\Mail::raw('halo Siswa baru', function($message){
+		$message->to('agusronaldo2@gmail.com', 'Agus Ronaldo');
+		$message->subject('Pendaftaran Siswa');
+	});
+});
+
 Route::group(['middleware' => ['auth','checkRole:admin']], function(){
 	Route::get('/siswa', 'SiswaController@index');
 	Route::post('/siswa/create', 'SiswaController@create');
