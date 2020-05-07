@@ -200,4 +200,9 @@ class SiswaController extends Controller
         return view('siswa.profilsaya', compact('siswa','nama_siswa', 'categories', 'mapel', 'data'));
     }
 
+    public function importexcel(Request $request)
+    {
+        Excel::import(new \App\Imports\SiswaImport,$request->file('data_siswa'));
+    }
+
 }

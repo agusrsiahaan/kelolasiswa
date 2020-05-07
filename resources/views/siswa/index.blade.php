@@ -30,9 +30,36 @@ Data Siswa
                <div class="col-8">
                   <a style="float: right;" href="/siswa/export_excel" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report (.xlsx)</a>
                  <a style="float: right;" href="/siswa/export_pdf" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report (.pdf)</a>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#importxls">
+                    <i class="fas fa-download fa-sm text-white-50"></i> Import (.xls)
+                  </button>
                </div>
             </div>
-    
+
+            <!-- Modal -->
+            <div class="modal fade" id="importxls" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Import Data Excel</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    {!!Form::open(['route' => 'siswa.import', 'class' => 'form-horizontal', 'enctype' => 'multipart/form-data'])!!}
+
+                    {!!Form::file('data_siswa')!!}
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" value="Import">Save changes</button>
+                  </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <!-- Button trigger modal -->
